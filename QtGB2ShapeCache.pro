@@ -8,6 +8,7 @@ CONFIG += console
 CONFIG -= app_bundle
 
 include(Box2D/box2d.pri)
+include(qtplist/qtplist.pri)
 
 TEMPLATE = app
 
