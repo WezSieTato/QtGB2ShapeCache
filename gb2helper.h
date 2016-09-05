@@ -4,11 +4,9 @@
 #include <QPointF>
 #include <QString>
 
-class QtGB2Helper
+class GB2Helper
 {
 public:
-    QtGB2Helper();
-
     static QPointF pointFromString(const QString &pointString);
 };
 

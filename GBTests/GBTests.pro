@@ -15,9 +15,11 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 include(../qtgb2shapecache.pri)
+include(../Box2D/box2d.pri)
+include(../qtplist/qtplist.pri)
 
-
-SOURCES += tst_qtgb2shelpertests.cpp
+SOURCES += \
+    tst_gb2shelpertests.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 DISTFILES +=

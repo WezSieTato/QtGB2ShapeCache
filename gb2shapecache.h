@@ -35,10 +35,10 @@ struct BodyDef
     QPointF anchorPoint;
 };
 
-class QtGB2ShapeCache : QObject
+class GB2ShapeCache : QObject
 {
 public:
-    QtGB2ShapeCache(QObject *parent=Q_NULLPTR);
+    GB2ShapeCache(QObject *parent=Q_NULLPTR);
 
     /**
      * Adds shapes to the shape cache

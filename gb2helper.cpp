@@ -1,14 +1,9 @@
-#include "qtgb2helper.h"
+#include "gb2helper.h"
 
 #include <QStringList>
 #include <QList>
 
-QtGB2Helper::QtGB2Helper()
-{
-
-}
-
-QPointF QtGB2Helper::pointFromString(const QString &pointString)
+QPointF GB2Helper::pointFromString(const QString &pointString)
 {
     QString theString(pointString);
     theString.remove('{');

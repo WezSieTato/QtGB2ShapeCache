@@ -13,9 +13,9 @@ include(qtplist/qtplist.pri)
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    qtgb2helper.cpp \
-    qtgb2shapecache.cpp
+    gb2helper.cpp \
+    gb2shapecache.cpp
 
 HEADERS += \
-    qtgb2helper.h \
-    qtgb2shapecache.h
+    gb2helper.h \
+    gb2shapecache.h

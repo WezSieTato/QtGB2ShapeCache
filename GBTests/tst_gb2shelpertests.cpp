@@ -1,14 +1,11 @@
 #include <QString>
 #include <QtTest>
 
-#include <qtgb2helper.h>
+#include <gb2helper.h>
 
-class QtGb2SHelperTests : public QObject
+class Gb2SHelperTests : public QObject
 {
     Q_OBJECT
-
-public:
-    QtGb2SHelperTests();
 
 private Q_SLOTS:
     void testpointFromString_data();
@@ -16,12 +13,7 @@ private Q_SLOTS:
 
 };
 
-QtGb2SHelperTests::QtGb2SHelperTests()
-{
-
-}
-
-void QtGb2SHelperTests::testpointFromString_data()
+void Gb2SHelperTests::testpointFromString_data()
 {
     QTest::addColumn<QString>("string");
     QTest::addColumn<QPointF>("result");
@@ -31,16 +23,16 @@ void QtGb2SHelperTests::testpointFromString_data()
     QTest::newRow("Point of floats") << "{2.3,3.2}" << QPointF(2.3f, 3.2f);
 }
 
-void QtGb2SHelperTests::testpointFromString()
+void Gb2SHelperTests::testpointFromString()
 {
     QFETCH(QString, string);
     QFETCH(QPointF, result);
 
-    QPointF point = QtGB2Helper::pointFromString(string);
+    QPointF point = GB2Helper::pointFromString(string);
 
     QCOMPARE(point, result);
 }
 
-QTEST_APPLESS_MAIN(QtGb2SHelperTests)
+QTEST_APPLESS_MAIN(Gb2SHelperTests)
 
-#include "tst_qtgb2shelpertests.moc"
+#include "tst_gb2shelpertests.moc"

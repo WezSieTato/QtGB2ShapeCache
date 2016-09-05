@@ -1,7 +1,7 @@
 INCLUDEPATH  += $$PWD
 
-SOURCES += $$PWD/qtgb2helper.cpp \
-    $$PWD/qtgb2shapecache.cpp
+SOURCES += $$PWD/gb2helper.cpp \
+    $$PWD/gb2shapecache.cpp
 
-HEADERS += $$PWD/qtgb2helper.h \
-    $$PWD/qtgb2shapecache.h
+HEADERS += $$PWD/gb2helper.h \
+    $$PWD/gb2shapecache.h

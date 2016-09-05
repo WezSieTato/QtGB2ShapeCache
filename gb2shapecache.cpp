@@ -1,17 +1,17 @@
-#include "qtgb2shapecache.h"
+#include "gb2shapecache.h"
 
-#include "qtgb2helper.h"
+#include "gb2helper.h"
 
 #include <QVariantMap>
 #include <QtGlobal>
 #include <plistparser.h>
 
-QtGB2ShapeCache::QtGB2ShapeCache(QObject *parent) : QObject(parent)
+GB2ShapeCache::GB2ShapeCache(QObject *parent) : QObject(parent)
 {
 
 }
 
-void QtGB2ShapeCache::addShapeWithFile(QIODevice *plist)
+void GB2ShapeCache::addShapeWithFile(QIODevice *plist)
 {
     QVariantMap map = PListParser::parsePList(plist).toMap();
 
@@ -33,7 +33,7 @@ void QtGB2ShapeCache::addShapeWithFile(QIODevice *plist)
         // create body object
         BodyDef bodyDef;
 
-        bodyDef.anchorPoint = QtGB2Helper::pointFromString(bodyMap["anchorpoint"].toString());
+        bodyDef.anchorPoint = GB2Helper::pointFromString(bodyMap["anchorpoint"].toString());
 
         // iterate through the fixtures
         QVariantList fixtureList = bodyData["fixtures"].toList();
@@ -72,7 +72,7 @@ void QtGB2ShapeCache::addShapeWithFile(QIODevice *plist)
                     for(QVariant pointStringVariant : polygonArray)
                     {
                         QString pointString = pointStringVariant.toString();
-                        QPointF offset = QtGB2Helper::pointFromString(pointString);
+                        QPointF offset = GB2Helper::pointFromString(pointString);
                         vertices[vindex].x = offset.x() / _ptmRatio;
                         vertices[vindex].y = offset.y() / _ptmRatio;
                         vindex++;
@@ -94,7 +94,7 @@ void QtGB2ShapeCache::addShapeWithFile(QIODevice *plist)
 
                 b2CircleShape *circleShape = new b2CircleShape();
                 circleShape->m_radius = circleData["radius"].toFloat() / _ptmRatio;
-                QPointF p = QtGB2Helper::pointFromString(fixtureData["center"].toString());
+                QPointF p = GB2Helper::pointFromString(fixtureData["center"].toString());
                 circleShape->m_p = b2Vec2(p.x() / _ptmRatio, p.y() / _ptmRatio);
                 fix.fixture.shape = circleShape;
 
@@ -112,7 +112,7 @@ void QtGB2ShapeCache::addShapeWithFile(QIODevice *plist)
     }
 }
 
-void QtGB2ShapeCache::addFixturesToBody(b2Body *body, const QString &shapeName)
+void GB2ShapeCache::addFixturesToBody(b2Body *body, const QString &shapeName)
 {
     BodyDef so = _shapeObjects[shapeName];
 
@@ -122,13 +122,13 @@ void QtGB2ShapeCache::addFixturesToBody(b2Body *body, const QString &shapeName)
     }
 }
 
-QPointF QtGB2ShapeCache::anchorPointForShape(const QString &shapeName) const
+QPointF GB2ShapeCache::anchorPointForShape(const QString &shapeName) const
 {
     BodyDef bd = _shapeObjects[shapeName];
     return bd.anchorPoint;
 }
 
-float QtGB2ShapeCache::ptmRatio() const
+float GB2ShapeCache::ptmRatio() const
 {
     return _ptmRatio;
 }
