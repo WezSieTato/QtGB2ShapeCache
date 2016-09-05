@@ -6,9 +6,10 @@
 #include <QtGlobal>
 #include <plistparser.h>
 
-GB2ShapeCache::GB2ShapeCache(QObject *parent) : QObject(parent)
+GB2ShapeCache &GB2ShapeCache::getSharedShapeCache()
 {
-
+    static GB2ShapeCache instance;
+    return instance;
 }
 
 void GB2ShapeCache::addShapeWithFile(QIODevice *plist)

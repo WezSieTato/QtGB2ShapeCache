@@ -35,10 +35,10 @@ struct BodyDef
     QPointF anchorPoint;
 };
 
-class GB2ShapeCache : QObject
+class GB2ShapeCache
 {
 public:
-    GB2ShapeCache(QObject *parent=Q_NULLPTR);
+    static GB2ShapeCache& getSharedShapeCache();
 
     /**
      * Adds shapes to the shape cache
@@ -62,7 +62,11 @@ public:
 
     float ptmRatio() const;
 
+    GB2ShapeCache(GB2ShapeCache const&)   = delete;
+    void operator=(GB2ShapeCache const&)  = delete;
 private:
+    GB2ShapeCache() {};
+
     float _ptmRatio;
     QMap<QString, BodyDef> _shapeObjects;
 
