@@ -1,0 +1,1 @@
+# QtGB2ShapeCache
